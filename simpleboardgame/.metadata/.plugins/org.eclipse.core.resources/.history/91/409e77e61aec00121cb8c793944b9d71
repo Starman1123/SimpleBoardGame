@@ -1,0 +1,181 @@
+import java.awt.Color;
+import java.util.*;
+public class Board {
+	
+	public static boolean iAmDebugging = true;
+	private ArrayList<Connector> red;
+	private ArrayList<Connector> blue;
+	private ArrayList<Connector> white;
+	private ArrayList<Connector> ALL;
+	private Connector c1,c2,c3,c4,c5,c6,c7,c8,c9,c10,c11,c12,c13,c14,c15;
+	// Initialize an empty board with no colored edges.
+	public Board ( ) {
+		// You fill this in.
+		red = new ArrayList<Connector>();
+		blue = new ArrayList<Connector>();
+		white = new ArrayList<Connector>();
+		ALL = new ArrayList<Connector>();
+		c1 = new Connector(1,2);
+		c2 = new Connector(1,3);
+		c3 = new Connector(1,4);
+		c4 = new Connector(1,5);
+		c5 = new Connector(1,6);
+		c6 = new Connector(2,3);
+		c7 = new Connector(2,4);
+		c8 = new Connector(2,5);
+		c9 = new Connector(2,6);
+		c10 = new Connector(3,4);
+		c11 = new Connector(3,5);
+		c12 = new Connector(3,6);
+		c13 = new Connector(4,5);
+		c14 = new Connector(4,6);
+		c15 = new Connector(5,6);
+		ALL.add(c1);
+		ALL.add(c2);
+		ALL.add(c3);
+		ALL.add(c4);
+		ALL.add(c5);
+		ALL.add(c6);
+		ALL.add(c7);
+		ALL.add(c8);
+		ALL.add(c9);
+		ALL.add(c10);
+		ALL.add(c11);
+		ALL.add(c12);
+		ALL.add(c13);
+		ALL.add(c14);
+		ALL.add(c15);
+	}
+	
+	// Add the given connector with the given color to the board.
+	// Unchecked precondition: the given connector is not already chosen 
+	// as RED or BLUE.
+	public void add (Connector cnctr, Color c) {
+		// You fill this in.
+		if (c.equals(Color.blue)) {
+			blue.add(cnctr);
+		} else{
+			if (c.equals(Color.RED)) {
+				red.add(cnctr);
+			}	
+		}
+	}
+	
+	// Set up an iterator through the connectors of the given color, 
+	// which is either RED, BLUE, or WHITE. 
+	// If the color is WHITE, iterate through the uncolored connectors.
+	// No connector should appear twice in the iteration.  
+	public Iterator<Connector> connectors (Color c) {
+		// You fill this in.
+		class ConIterRed implements Iterator<Connector> {
+			private int index = 0;
+			public boolean hasNext() {
+				return (index < red.size() - 1);
+			}
+			public Connector next() {
+				index++;
+				return red.get(index - 1);
+			}
+			public void remove() {
+			}	
+		}
+		class ConIterBlue implements Iterator<Connector> {
+			private int index = 0;
+			public boolean hasNext() {
+				return (index < blue.size() - 1);
+			}
+			public Connector next() {
+				index++;
+				return blue.get(index - 1);
+			}
+			public void remove() {
+			}	
+		}
+		class ConIterWhite implements Iterator<Connector> {
+			private int index = 0;
+			public boolean hasNext() {
+				return (index < white.size() - 1);
+			}
+			public Connector next() {
+				index++;
+				return white.get(index - 1);
+			}
+			public void remove() {
+			}	
+		}
+		if (c.equals(red)){
+			ConIterRed iter = new ConIterRed();
+			return iter;
+		}
+		else if (c.equals(blue)){
+			ConIterBlue iter = new ConIterBlue();
+			return iter;
+		}
+		else if (c.equals(white)){
+			ConIterWhite iter = new ConIterWhite();
+			return iter;
+		}
+		else throw new java.lang.IndexOutOfBoundsException("Wrong Color");
+	}
+	
+	// Set up an iterator through all the 15 connectors.
+	// No connector should appear twice in the iteration.  
+	public Iterator<Connector> connectors ( ) {
+		// You fill this in.
+		
+		class ConIterAll implements Iterator<Connector> {
+			private int index = 0;
+			public boolean hasNext() {
+				return (index < 14);
+			}
+			public Connector next() {
+				index++;
+				return ALL.get(index - 1);
+			}
+			public void remove() {
+			}	
+		}
+		ConIterAll iter = new ConIterAll();
+		return iter;
+	}
+	
+	// Return the color of the given connector.
+	// If the connector is colored, its color will be RED or BLUE;
+	// otherwise, its color is WHITE.
+	public Color colorOf (Connector e) {
+		// You fill this in.
+		return Color.WHITE;
+	}
+	
+	// Unchecked prerequisite: cnctr is an initialized uncolored connector.
+	// Let its endpoints be p1 and p2.
+	// Return true exactly when there is a point p3 such that p1 is adjacent
+	// to p3 and p2 is adjacent to p3 and those connectors have color c.
+	public boolean formsTriangle (Connector cnctr, Color c) {
+		// You fill this in.
+		return false;
+	}
+	
+	// The computer (playing BLUE) wants a move to make.
+	// The board is assumed to contain an uncolored connector, with no 
+	// monochromatic triangles.
+	// There must be an uncolored connector, since if all 15 connectors are colored,
+	// there must be a monochromatic triangle.
+	// Pick the first uncolored connector that doesn't form a BLUE triangle.
+	// If each uncolored connector, colored BLUE, would form a BLUE triangle,
+	// return any uncolored connector.
+	public Connector choice ( ) {
+		// You fill this in.
+		return null;
+	}
+
+	// Return true if the instance variables have correct and internally
+	// consistent values.  Return false otherwise.
+	// Unchecked prerequisites:
+	//	Each connector in the board is properly initialized so that 
+	// 	1 <= myPoint1 < myPoint2 <= 6.
+	public boolean isOK ( ) {
+		// You fill this in.
+		return true;
+	}
+}

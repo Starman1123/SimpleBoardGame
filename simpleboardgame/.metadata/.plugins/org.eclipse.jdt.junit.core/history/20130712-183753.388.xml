@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testrun name="ConnectorTest" project="proj1" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="ConnectorTest" time="0.001">
+    <testcase name="toConnectortest1" classname="ConnectorTest" time="0.001"/>
+  </testsuite>
+</testrun>

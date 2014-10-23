@@ -1,0 +1,14 @@
+import static org.junit.Assert.*;
+
+import org.junit.Test;
+
+
+public class ConnectorTest {
+
+	@Test
+	public void test() {
+		Connector c1 = new Connector(3, 4);
+		assertEquals(c1.toString(), Connector.toConnector("34"));
+	}
+
+}
